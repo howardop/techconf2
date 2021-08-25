@@ -1,0 +1,12 @@
+{
+    "azureFunctions.deploySubpath": ".",
+    "azureFunctions.scmDoBuildDuringDeployment": true,
+    "azureFunctions.projectLanguage": "Python",
+    "azureFunctions.projectRuntime": "~3",
+    "debug.internalConsoleOptions": "neverOpen",
+    // Create a virtual environment when creating a new Python project.
+    "azureFunctions.createPythonVenv": false,
+    // Activate Python Environment in Terminal created using the Extension.
+     "python.terminal.activateEnvironment": false
+ 
+}

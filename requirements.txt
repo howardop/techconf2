@@ -1,5 +1,10 @@
+# Do not include azure-functions-worker as it may conflict with the Azure Functions platform
+
+# Known issue, the python package `psycopg2` does not work directly in Azure; install `psycopg2-binary` instead to use the `psycopg2` library in Azure
+
 adal==1.2.3
 astroid==2.4.1
+azure-functions
 azure-common==1.1.25
 azure-servicebus==7.3.2
 certifi==2020.4.5.1
@@ -21,7 +26,7 @@ mccabe==0.6.1
 msrest
 msrestazure==0.6.3
 oauthlib==3.1.0
-psycopg2==2.8.5
+psycopg2-binary
 pycparser==2.20
 PyJWT==1.7.1
 pylint==2.5.2
