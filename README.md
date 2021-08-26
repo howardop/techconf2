@@ -63,9 +63,22 @@ Complete a month cost analysis of each Azure resource to give an estimate total 
 
 | Azure Resource | Service Tier | Monthly Cost |
 | ------------ | ------------ | ------------ |
-| *Azure Postgres Database* |     |              |
-| *Azure Service Bus*   |         |              |
-| ...                   |         |              |
+| *Azure Postgres Database* |   Basic  |   024.82           |
+| *App Service* | Basic | 012.41 |
+| *Storage Account* | Transaction Optimized | 120.06 |
+| *Azure Functions* | Consumption | 001.80
+| *Azure Service Bus*   | Basic        |   000.05           |
+| ------------ | ------------ | ------------ |
+| **Total**             |         |  **169.66**           |
+This analysis was performed using the Azure Pricing Calculator (https://azure.microsoft.com/en-us/pricing/calculator/).  The full analysis is in the file MonthlyCostAnalysis.pdf.
 
 ## Architecture Explanation
-This is a placeholder section where you can provide an explanation and reasoning for your architecture selection for both the Azure Web App and Azure Function.
+### Rationale for use of Azure Web App
+In this task, 2 key reasons that we are asked to migrate the TechConf website to Azure is because: 
+- The web application is not scalable to handle peak user load
+- The current architecture is not cost-effective
+
+Azure Web Apps is an HTTP-based service for hosting web applications.   They run and scale with ease on both Windows and Linux-based environments.  They are also very cost-effective because you only pay for what you use.  You can control what resources you used by choosing an appropriate App Service Plan.  
+### Rationale for sue of Azure Function
+The third reason for porting the TechConf website for Azure was that when the admin sends out notifications, it's currently taking a long time because it's looping through all attendees, resulting in some HTTP timeout exceptions.  Microsoft’s Azure Functions is a modern serverless architecture to support event-driven cloud computing that is easy for developers to use.  In this application, the Azure Function runs in the background, asynchronously with the web application.  Hence the timeout problem will be completely eliminated.
+ 

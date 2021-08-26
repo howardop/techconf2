@@ -36,4 +36,6 @@ set FCNNAME=hlosbqclient
 set FCNRG=p3-fcnapp-rg
 set FCNSTGACCT=hlofcnappstgacct
 
+set SENDGRIDAPI=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
+
 @echo on

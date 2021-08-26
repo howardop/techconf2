@@ -8,6 +8,7 @@
 # The skelton of the `__init__.py` file will consist of the following logic:
 
 # ```
+import ServiceBusQueueTrigger1 
 import logging
 import azure.functions as func
 import psycopg2
@@ -28,7 +29,7 @@ def main(msg: func.ServiceBusMessage):
 
     POSTGRES_URL='hlopgserver.postgres.database.azure.com'  #TODO: __DONE__ Update value
     POSTGRES_USER='hloadmin@hlopgserver' #TODO: __DONE__ Update value
-    POSTGRES_PW='P@ssw0rd'   #TODO: __DONE__ Update value
+    POSTGRES_PW = os.getenv('POSTGRES_PW')  #TODO: __DONE__ Update value
     POSTGRES_DB='techconfdb'   #TODO: __DONE__ Update value
 
     # Connect to the PostgreSQL database server
@@ -93,7 +94,8 @@ def send_email(email, subject, body):
         subject=subject,
         plain_text_content=body)
     try:
-        sg = SendGridAPIClient('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')
+        sg = SendGridAPIClient(os.getenv('SENDGRID_API'))
+        
         #sg = SendGridAPIClient('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')
         response = sg.send(message)
         print("SendGrid Response Code = {}".format(response.status_code))
